@@ -10,11 +10,22 @@ import FourthSmallShoesPic from "../images/image-product-4-thumbnail.jpg";
 import { ReactComponent as Minus } from "../images/icon-minus.svg"
 import { ReactComponent as Plus } from "../images/icon-plus.svg"
 import { ReactComponent as CartIcon } from "../images/icon-cart.svg";
+import Modal from "./Modal";
 
 function MainPart(props){
     const [amount, setAmount] = useState(0);
     const [activeImage, setActiveImage] = useState(null);
     const [currentImage, setCurrentImage] = useState(FirstShoesPic);
+
+    const [isModalOpen, setModalOpen] = useState(false); // 新的状态变量
+
+    const openModal = () => {
+      setModalOpen(true); // 打开模态对话框
+    };
+  
+    const closeModal = () => {
+      setModalOpen(false); // 关闭模态对话框
+    };
 
     const handleClick = (imageId) => {
         setActiveImage(imageId);
@@ -61,7 +72,7 @@ function MainPart(props){
 
     return (
         <div className="main-part">
-            <div className="pic-part">
+            <div className="pic-part" onClick={openModal}>
                 <img src={currentImage} alt="shoes" />
                 <div className="small-pic-part">
                 <img
@@ -114,6 +125,11 @@ function MainPart(props){
                         </button>
                 </div>
             </div>
+            {isModalOpen && (
+            <Modal onClose={closeModal}>
+                <img id="modal-content" src={currentImage} alt="Full size shoes" />
+            </Modal>
+            )}
         </div>
     );
 }
