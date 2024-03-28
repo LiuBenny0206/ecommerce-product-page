@@ -1,13 +1,285 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root{
+  --color-Orange: hsl(26, 100%, 55%);
+  --color-LightOrange: hsl(26, 97%, 63%);
+  --color-PaleOrange: hsl(25, 86%, 89%);
+  --color-VeryDarkBlue: hsl(220, 13%, 13%);
+  --color-DarkGrayishBlue: hsl(219, 9%, 45%);
+  --color-GrayishBlue: hsl(220, 14%, 75%);
+  --color-LightGrayishBlue: hsl(223, 64%, 98%);
+  --color-White: hsl(0, 0%, 100%);
+  --color-Black: hsl(0, 0%, 0%); /* (with 75% opacity for lightbox background)*/
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
 }
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 14px;
+}
+
+
+/*------------------------------------*\
+  #Header
+\*------------------------------------*/
+.header {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  width: 1200px;
+  height: 100px;
+  border-bottom: 1px solid var(--color-GrayishBlue);
+  cursor: pointer;
+}
+
+.header-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  height: 100px;
+  color: var(--color-DarkGrayishBlue);
+}
+
+.header-left p{
+  height: 55px;
+  margin-left: 20px;
+  padding-top: 40px;
+  
+}
+
+.header-left p:hover{
+  border-bottom: 5px solid var(--color-Orange);
+}
+
+.header-right {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+.header-cart-part #header-cart-number{
+  padding-left: 7px;
+  position: relative;
+  top: 10px;
+  left: 20px;
+  background-color: var(--color-Orange);
+  border-radius: 10px;
+  color: var(--color-White);
+  font-weight: 700;
+}
+
+
+
+.header-right img{
+  width: 50px;
+}
+.header-right img:hover{
+  border-radius: 50px;
+  border: 1px solid var(--color-Orange);
+}
+
+/*------------------------------------*\
+  #MainPart
+\*------------------------------------*/
+.main-part{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1000px;
+  height: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 80px;
+}
+
+
+
+  /*------------------------------------*\
+    #Picture
+  \*------------------------------------*/
+  .pic-part img{
+    width: 400px;
+    height: 400px;
+    border-radius: 10px;
+  }
+  
+  .small-pic-part{
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    gap: 27px;
+    cursor: pointer;
+  }
+  .small-pic-part img{
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+  }
+  .small-pic-part img:hover{
+    padding: 4px; /* 举例，可以根据需要调整 */
+  }
+
+  .active {
+    filter: var(--color-LightGrayishBlue);
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);  
+  }
+
+  /*------------------------------------*\
+    #Info
+  \*------------------------------------*/
+
+  .info-part{
+    display: flex;
+    flex-direction: column;
+    width: 460px;
+    padding-top: 50px;
+  }
+  
+  .info-part #company{
+    font-weight: 700;
+    color: var(--color-Orange);
+    margin-bottom: 10px;
+  }
+  .info-part #title{
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 30px;
+  }
+  .info-part #caption{
+    font-size: 15px;
+    color: var(--color-DarkGrayishBlue);
+    margin-bottom: 20px;
+  }
+  
+  .price-part{
+    display: flex;
+    flex-direction: row;
+    font-weight: 700;
+    margin-bottom: 10px;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .price-part #price{
+    font-size: 24px;
+  }
+  .price-part #discount{
+    color: var(--color-Orange);
+    background-color: var(--color-PaleOrange);
+    border-radius: 5px;
+    padding: 5px
+  }
+
+  
+
+  #original-price{
+    color: var(--color-GrayishBlue);
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-decoration: line-through;
+
+  }
+  
+  .button-part{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  .button-part .plus-minus-part{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+    width: 135px;
+    border-radius: 10px;
+    background-color: var(--color-LightGrayishBlue);
+  }
+  .button-part button{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    background-color: var(--color-Orange);
+    border-radius: 10px;
+    border: none;
+    width: 250px;
+    color: var(--color-White);
+    gap: 10px;
+  }
+  .button-part button:hover{
+    background-color: var(--color-LightOrange);
+  }
+  #button-cart-icon path{
+    fill: white;
+  }
+  /*------------------------------------*\
+    #Cart
+  \*------------------------------------*/
+  .cart-part{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 180px;
+    box-shadow: -5px 5px 10px 0 rgba(0, 0, 0, 0.2), 5px 5px 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transform: translate(340%, -324%);
+    background-color: var(--color-White);
+  }
+
+  .cart-part .title{
+    font-weight: 700;
+    padding: 10px;
+    border-bottom: 1px solid var(--color-GrayishBlue);
+  }
+
+  .info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    height: 50px;
+    gap: 10px;
+
+  }
+  .cart-pic-part img{
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  .info .info-price{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .checkout-btn{
+    background-color: var(--color-Orange);
+    border-radius: 10px;
+    border: none;
+    color: var(--color-White);
+    margin: 10px;
+    width: 280px;
+    height: 50px;
+  }
+
+  .empty-cart{
+    font-weight: 700;
+    color: var(--color-DarkGrayishBlue);
+    margin: auto;
+  }
+
+    
