@@ -75,32 +75,32 @@ function MainPart(props){
             <div className="pic-part" onClick={openModal}>
                 <img src={currentImage} alt="shoes" />
                 <div className="small-pic-part">
-                <img
-                    src={FirstSmallShoesPic}
-                    alt="First small pic shoes"
-                    className={getActiveClass('first')}
-                    onClick={() => handleClick('first')}
-                />
-                <img
-                    src={SecondSmallShoesPic}
-                    alt="Second small pic shoes"
-                    className={getActiveClass('second')}
-                    onClick={() => handleClick('second')}
-                />
-                <img
-                    src={ThirdSmallShoesPic}
-                    alt="Third small pic shoes"
-                    className={getActiveClass('third')}
-                    onClick={() => handleClick('third')}
-                />
-                <img
-                    src={FourthSmallShoesPic}
-                    alt="Fourth small pic shoes"
-                    className={getActiveClass('fourth')}
-                    onClick={() => handleClick('fourth')}
-                />
+                    <img
+                        src={FirstSmallShoesPic}
+                        alt="First small pic shoes"
+                        className={getActiveClass('first')}
+                        onClick={() => handleClick('first')}
+                    />
+                    <img
+                        src={SecondSmallShoesPic}
+                        alt="Second small pic shoes"
+                        className={getActiveClass('second')}
+                        onClick={() => handleClick('second')}
+                    />
+                    <img
+                        src={ThirdSmallShoesPic}
+                        alt="Third small pic shoes"
+                        className={getActiveClass('third')}
+                        onClick={() => handleClick('third')}
+                    />
+                    <img
+                        src={FourthSmallShoesPic}
+                        alt="Fourth small pic shoes"
+                        className={getActiveClass('fourth')}
+                        onClick={() => handleClick('fourth')}
+                    />
                 </div>
-                </div>
+            </div>
             <div className="info-part">
                 <p id="company">SNEAKER COMPANY</p>
                 <p id="title">Fall Limited Edition Sneakers</p>
