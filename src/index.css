@@ -517,6 +517,11 @@ body {
 }
 
 @media only screen and (max-width: 500px) {
+  .big-pic-part img {
+    border-radius: 10px;
+    width: 310px;
+    height: 300px;
+}
   .cart-part {
     transform: translate(29%, -390%);
   }
@@ -557,6 +562,7 @@ body {
   .cart-part {
     transform: translate(13%, -389%);
   }
+
 }
 
 
