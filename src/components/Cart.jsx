@@ -4,7 +4,6 @@ import { ReactComponent as TrashIcon } from "../images/icon-delete.svg"
 
 
 function Cart(props) {
-    const [deleteAmount, setDeleteAmount] = useState("");
 
     function handleDeleteAmount() {
         const newAmount = "";

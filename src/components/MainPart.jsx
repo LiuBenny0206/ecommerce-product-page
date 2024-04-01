@@ -12,93 +12,51 @@ import { ReactComponent as Plus } from "../images/icon-plus.svg"
 import { ReactComponent as CartIcon } from "../images/icon-cart.svg";
 import Modal from "./Modal";
 
+const images = [
+    { id: 'first', src: FirstShoesPic, alt: 'First pair of sneakers' },
+    { id: 'second', src: SecondShoesPic, alt: 'Second pair of sneakers' },
+    { id: 'third', src: ThirdShoesPic, alt: 'Third pair of sneakers' },
+    { id: 'fourth', src: FourthShoesPic, alt: 'Fourth pair of sneakers' }
+  ];
+
+
+
 function MainPart(props){
     const [amount, setAmount] = useState(0);
-    const [activeImage, setActiveImage] = useState(null);
-    const [currentImage, setCurrentImage] = useState(FirstShoesPic);
+
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
 
     const [isModalOpen, setModalOpen] = useState(false); // 新的状态变量
 
-    const openModal = () => {
-      setModalOpen(true); // 打开模态对话框
-    };
-  
-    const closeModal = () => {
-      setModalOpen(false); // 关闭模态对话框
+    const handleImageClick = index => {
+        setCurrentImageIndex(index);
+        setModalOpen(true);
     };
 
-    const handleClick = (imageId) => {
-        setActiveImage(imageId);
-        switch (imageId) {
-            case 'first':
-                setCurrentImage(FirstShoesPic);
-                break;
-            case 'second':
-                setCurrentImage(SecondShoesPic);
-                break;
-            case 'third':
-                setCurrentImage(ThirdShoesPic);
-                break;
-            case 'fourth':
-                setCurrentImage(FourthShoesPic);
-                break;
-            default:
-                setCurrentImage(FirstShoesPic);
-        }
-    };
-
-    const getActiveClass = (imageId) => {
-        return activeImage === imageId ? 'active' : '';
-    };
-    
-    function increase(){
-        const newAmount = amount + 1
-        setAmount(newAmount);
-    };
 
     
-    function decrease() {
-        if (amount > 0) {
-            const newAmount = amount - 1;
-            setAmount(newAmount);
-        };
-    };
+    
+    const increase = () => setAmount(prev => prev + 1);
+    const decrease = () => setAmount(prev => (prev > 0 ? prev - 1 : 0));
+    const addToCart = () => props.setShoesAmount(prev => prev + amount);
 
-    function addToCart(){
-        props.setShoesAmount(amount);
-
-    };
 
 
     return (
         <div className="main-part">
-            <div className="pic-part" onClick={openModal}>
-                <img src={currentImage} alt="shoes" />
+            <div className="pic-part" onClick={() => handleImageClick(currentImageIndex)}>
+                <img src={images[currentImageIndex].src} alt={images[currentImageIndex].alt} />
                 <div className="small-pic-part">
+                {images.map((image, index) => (
                     <img
-                        src={FirstSmallShoesPic}
-                        alt="First small pic shoes"
-                        className={getActiveClass('first')}
-                        onClick={() => handleClick('first')}
+                    key={image.id}
+                    src={image.src}
+                    alt={image.alt}
+                    className={currentImageIndex === index ? 'active' : ''}
+                    onClick={() => handleImageClick(index)}
                     />
-                    <img
-                        src={SecondSmallShoesPic}
-                        alt="Second small pic shoes"
-                        className={getActiveClass('second')}
-                        onClick={() => handleClick('second')}
-                    />
-                    <img
-                        src={ThirdSmallShoesPic}
-                        alt="Third small pic shoes"
-                        className={getActiveClass('third')}
-                        onClick={() => handleClick('third')}
-                    />
-                    <img
-                        src={FourthSmallShoesPic}
-                        alt="Fourth small pic shoes"
-                        className={getActiveClass('fourth')}
-                        onClick={() => handleClick('fourth')}
-                    />
+                ))}
                 </div>
             </div>
             <div className="info-part">
@@ -126,8 +84,8 @@ function MainPart(props){
                 </div>
             </div>
             {isModalOpen && (
-            <Modal onClose={closeModal}>
-                <img id="modal-content" src={currentImage} alt="Full size shoes" />
+             <Modal onClose={() => setModalOpen(false)}>
+                <img src={images[currentImageIndex].src} alt={images[currentImageIndex].alt} />
             </Modal>
             )}
         </div>

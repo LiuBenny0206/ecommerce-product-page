@@ -9,27 +9,23 @@ import Menu from "./Menu";
 function Header (props) {
     const[isMenuOpen, setMenuOpen] = useState(false);
 
-    const openMenu = () => {
-        setMenuOpen(true); // 打开模态对话框
-    };
-    
-    const closeMenu = () => {
-        setMenuOpen(false); // 关闭模态对话框
-    };
+    const toggleMenu = () => setMenuOpen(!isMenuOpen);
+
+    const navItems = ["Collections", "Men", "Women", "About", "Contact"];
+
+
 
     return (
         <div className="header">
             <div className="header-left">
-                <MenuIcon id="menu-icon" onClick={openMenu}/>
+                <MenuIcon id="menu-icon" onClick={toggleMenu}/>
                 {isMenuOpen && (
-                <Menu onClose={closeMenu}/>
+                <Menu onClose={toggleMenu}/>
                 )}
                 <SneakersLogo />
-                <p className="item">Collections</p>
-                <p className="item">Men</p>
-                <p className="item">Women</p>
-                <p className="item">About</p>
-                <p className="item">Contact</p>
+                {navItems.map(item => (
+                    <p key={item} className="item">{item}</p>
+                ))}
             </div>
             <div className="header-right">
                 <div className="header-cart-part">

@@ -11,7 +11,7 @@ function App () {
 
     function handleCartSection(){
         setCartSection(!showCartSection);
-        console.log("open");
+        console.log(showCartSection ? "Closing cart" : "Opening cart");
     }
 
     return (
